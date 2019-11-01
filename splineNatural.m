@@ -23,14 +23,14 @@
 ## Author: Mateo Zuluaga Loaiza <zulo30@MacBook-Pro-de-Mateo-Zuluaga-Loaiza.local>
 ## Created: 2019-10-31
 
-function [a,b,c,d] = splineNatural  (X, Y)
+function S = splineNatural  (X, Y)
 
 
 ## Se inicializan las variables auxiliares 
 
 n = length(X)- 1
 
-a = Y(1:n)
+a = Y(1:n);
 
 b = zeros(1,n);
 c = zeros(1,n);
@@ -39,7 +39,7 @@ d = zeros(1,n);
 h = zeros(1,n);
 
 
-alfa = zeros(1,n);
+alfa = zeros(1,n-1);
 ele = zeros(1,n);
 mu = zeros(1,n);
 z = zeros(1,n);
@@ -50,22 +50,21 @@ z = zeros(1,n);
 for i=1:n
     h(1,i) = X(i+1) - X(i);
 endfor
-h
+
 ## Paso 2
-for i=2:n-1
-    alfa(1,i) = (3/h(1,i)) * (Y(i+1)- Y(i)) - (3/h(1,i-1)) * (Y(i)- Y(i-1))
+for i=2:n
+    alfa(1,i-1) = (3/h(1,i)) * (Y(i+1)- Y(i)) - (3/h(1,i-1)) * (Y(i)- Y(i-1));
 endfor
 
 ## Paso 3
-ele(1) = 1;
-mu(1) = 0;
-z(1) = 0;
+ele(1,1) = 1;
+mu(1,1) = 0;
+z(1,1) = 0;
 
 ## Paso 4
 for i=2:n-1
-    l(1,i) =  2*(X(i+1) - X(i-1))- h(1,i-1) * mu(1,i-1);
+    ele(1,i) =  2*(X(i+1) - X(i-1))- h(1,i-1) * mu(1,i-1);
     mu(1,i) = h(1,i)/ele(1,i);
-
     z(1,i) = (alfa(1,i)-h(1,i-1)*z(1,i-1))/ele(1,i);
 endfor
 
@@ -80,10 +79,33 @@ while (key > 0 )
     c(1,key) = z(1,key) - (mu(1,key)* c(1,key+1));
     b(1,key) = (Y(key+1) - Y(key))/h(1,key) -  h(1,key)*(c(1,key+1) + 2*c(1,key))/3;
     d(1,key) = (c(1,key+1) - c(1,key))/(3*h(1,key));
-    key--
+    key--;
 endwhile
 
 ## Paso 7   Salida (aj,bj,cj,dj para j = 0,1, ... , n-1);
+S = armarMatrixSolucion(X,Y,b,c,d);
 ## Pare.
 
 endfunction
+
+
+##  
+##  Esta funcion es para armar la matriz solucion
+## 
+
+function S = armarMatrixSolucion(x,y,b,c,d)
+    n = length(x);
+    S = []; ## se inicializa la variable de la matriz S
+    for i=1:n-1
+        S(i,1) = i;
+        S(i,2) = x(1,i);
+        S(i,3) = y(1,i);
+        S(i,4) = b(1,i);
+        S(i,5) = c(1,i);
+        S(i,6) = d(1,i);
+    endfor
+    S(n,1) = n;
+    S(n,2) = x(1,n);
+    S(n,3) = y(1,n);
+    
+endfunction 
