@@ -18,7 +18,7 @@ El trabajo se puede entregar “hasta” el martes 5 de noviembre a las 10:00a.m
   * Las gráficas digitales.
   
   
-Este archivo debe estar marcado con los nombres de cada uno de los integrantes del equipo. Por ejemplo: gabrielcastaño-leidyagudelo-edisonvasco.zip
+Este archivo debe estar marcado con los nombres de cada uno de los integrantes del equipo. Por ejemplo: juanhincapie-johnbetancur-mateozuluaga.zip
 No serán revisados correos que lleguen pasada la hora límite de entrega.
 
 
