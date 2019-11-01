@@ -54,10 +54,6 @@ for i=2:n-1
     z(1,i) = (alfa(1,i)-h(1,i-1)*z(1,i-1))/ele(1,i);
 endfor
 
-ele
-mu
-z
-
 ## Paso 5
 ele(n) = 1;
 mu(n) = 0;
@@ -71,9 +67,6 @@ while (k > 0 )
     d(k) = (c(k+1) - c(k))/(3*h(1,k));
     k--;
 endwhile
-c
-b 
-d
 
 ## Paso 7   Salida (aj,bj,cj,dj para j = 0,1, ... , n-1);
 S = armarMatrixSolucion(X,Y,b,c,d);
