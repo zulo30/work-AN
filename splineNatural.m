@@ -27,39 +27,25 @@ function S = splineNatural  (X, Y)
 
 
 ## Se inicializan las variables auxiliares 
-
-n = length(X)- 1
-
+n = length(X)
 a = Y(1:n);
-
-b = zeros(1,n);
-c = zeros(1,n);
-d = zeros(1,n);
-
-h = zeros(1,n);
-
-
-alfa = zeros(1,n-1);
-ele = zeros(1,n);
-mu = zeros(1,n);
-z = zeros(1,n);
-
 
 
 ## Paso 1
-for i=1:n
-    h(1,i) = X(i+1) - X(i);
+for i=1:n-1
+    h(i) = X(i+1) - X(i);
 endfor
 
 ## Paso 2
-for i=2:n
-    alfa(1,i-1) = (3/h(1,i)) * (Y(i+1)- Y(i)) - (3/h(1,i-1)) * (Y(i)- Y(i-1));
+for i=2:n-1
+    alfa(1,i) = (3/h(1,i)) * (Y(i+1)- Y(i)) - (3/h(1,i-1)) * (Y(i)- Y(i-1));
 endfor
 
 ## Paso 3
 ele(1,1) = 1;
 mu(1,1) = 0;
 z(1,1) = 0;
+
 
 ## Paso 4
 for i=2:n-1
@@ -68,19 +54,26 @@ for i=2:n-1
     z(1,i) = (alfa(1,i)-h(1,i-1)*z(1,i-1))/ele(1,i);
 endfor
 
+ele
+mu
+z
+
 ## Paso 5
 ele(n) = 1;
 mu(n) = 0;
 c(n) = 0;
 
 ## Paso 6
-key = n - 1;
-while (key > 0 )
-    c(1,key) = z(1,key) - (mu(1,key)* c(1,key+1));
-    b(1,key) = (Y(key+1) - Y(key))/h(1,key) -  h(1,key)*(c(1,key+1) + 2*c(1,key))/3;
-    d(1,key) = (c(1,key+1) - c(1,key))/(3*h(1,key));
-    key--;
+k = n-1;
+while (k > 0 )
+    c(k) = z(k) - (mu(1,k)* c(k+1));
+    b(k) = (Y(k+1) - Y(k))/h(1,k) -  h(1,k)*(c(k+1) + 2*c(k))/3;
+    d(k) = (c(k+1) - c(k))/(3*h(1,k));
+    k--;
 endwhile
+c
+b 
+d
 
 ## Paso 7   Salida (aj,bj,cj,dj para j = 0,1, ... , n-1);
 S = armarMatrixSolucion(X,Y,b,c,d);
