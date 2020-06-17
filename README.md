@@ -28,9 +28,9 @@ No serán revisados correos que lleguen pasada la hora límite de entrega.
 * pandoc | [https://pandoc.org](https://pandoc.org)
 
 ## Recursos
-* matplotlib | []()
-* numpy | []()
-* sympy | []()
+* matplotlib | [https://matplotlib.org](https://matplotlib.org)
+* numpy | [https://numpy.org](https://numpy.org)
+* sympy | [https://www.sympy.org/en/index.html](https://www.sympy.org/en/index.html)
 * octave | [https://www.gnu.org/software/octave/](https://www.gnu.org/software/octave/)
 * colab | [https://colab.research.google.com/drive/](https://colab.research.google.com/drive/1FdnMlV9KXDKaOb77rUtq25LlTIXLkPHl)
 
