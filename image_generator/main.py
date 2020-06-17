@@ -23,7 +23,7 @@ def get_axes_of_turtle_image():
     ## configure the font for the labels on figure 
     matplotlib.rc('font', **FONT)
 
-    fig = plt.figure(figsize=(20,20))
+    fig = plt.figure(figsize=(14.86, 6.67), dpi = 72)
     a = fig.add_subplot(1, 1, 1)
     # add the turtle image as background 
     img = mpimg.imread(IMAGE_PATH)
@@ -44,12 +44,12 @@ def get_axes_of_turtle_image():
 
 def make_figure_two():
    ax = get_axes_of_turtle_image()
-   plt.show()
+   plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura2.png"), bbox_inches="tight", dpi = 72)
 
 def make_figure_three():
     ax = get_axes_of_turtle_image()
-    ax.plot(x,y,'ro-',markersize=15, linewidth = 5)
-    plt.show()
+    ax.plot(x,y,'ro-',markersize=12, linewidth = 4)
+    plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura3.png"), bbox_inches="tight", dpi = 72)
 
 def make_figure_four():
     ax = get_axes_of_turtle_image()
@@ -57,16 +57,16 @@ def make_figure_four():
     draw_red_dot(ax, 10, 1.6)
     draw_blue_line(ax, xpi, ypi)
     draw_blue_line(ax, xpf, ypf)
-    plt.show()
+    plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura4.png"), bbox_inches="tight", dpi = 72)
 
 
 def make_figure_eight():
     ax = get_axes_of_turtle_image()
-    ax.plot(x,y,'ro-',markersize=15, linewidth = 5)
+    ax.plot(x,y,'ro-',markersize=12, linewidth = 4)
     spline_y = get_spline_y()
     spline_x = np.arange(-13.4, 10.1, 0.1)
-    ax.plot(spline_x,spline_y,'b-', linewidth = 5)
-    plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura8.png"))
+    ax.plot(spline_x,spline_y,'b-', linewidth = 4)
+    plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura8.png"), bbox_inches="tight", dpi = 72)
 
 def get_spline_y():
     count = x[0]
@@ -81,14 +81,17 @@ def get_spline_y():
     return spline_y
 
 def draw_blue_line(axes,x_coordenates,y_coordenates):
-    axes.plot(x_coordenates, y_coordenates,'bo-',markersize=15, linewidth = 1)
+    axes.plot(x_coordenates, y_coordenates,'bo-',markersize=12, linewidth = 1)
 
 def draw_red_dot(axes,x_coordenates,y_coordenates):
-    axes.plot(x_coordenates, y_coordenates,'ro',markersize=15, linewidth = 5)
+    axes.plot(x_coordenates, y_coordenates,'ro',markersize=12, linewidth = 4)
 
 
 def main():
     print("successful ...!")
+    make_figure_two()
+    make_figure_three()
+    make_figure_four()
     make_figure_eight()
 
 if __name__ == "__main__":
