@@ -77,7 +77,7 @@ def get_spline_y():
         while count < limit:
             value = (coeff[i,3]*(count-x[i])**3)+(coeff[i,2]*(count-x[i])**2)+(coeff[i,1]*(count-x[i]))+(coeff[i,0])
             spline_y  = np.append(spline_y, value)
-            count+=0.1
+            count+=1
     return spline_y
 
 def draw_blue_line(axes,x_coordenates,y_coordenates):
