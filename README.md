@@ -22,12 +22,16 @@ Este archivo debe estar marcado con los nombres de cada uno de los integrantes d
 No serán revisados correos que lleguen pasada la hora límite de entrega.
 
 
-## Requerimientos
-* requerimiento | []()
-
+## Pre-requisitos
+* pyenv | [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+* pipenv | [https://pipenv-es.readthedocs.io/es/latest/](https://pipenv-es.readthedocs.io/es/latest/)
 
 ## Recursos
-* Recursos | []()
+* matplotlib | []()
+* pandoc | []()
+* numpy | []()
+* sympy | []()
+* octave | []()
 
 ## Miembros
 * Mateo Zuluaga Loaiza
