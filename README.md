@@ -31,7 +31,7 @@ No serán revisados correos que lleguen pasada la hora límite de entrega.
 * matplotlib | []()
 * numpy | []()
 * sympy | []()
-* octave | []()
+* octave | [https://www.gnu.org/software/octave/](https://www.gnu.org/software/octave/)
 * colab | [https://colab.research.google.com/drive/](https://colab.research.google.com/drive/1FdnMlV9KXDKaOb77rUtq25LlTIXLkPHl)
 
 ## Miembros
