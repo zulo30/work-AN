@@ -25,11 +25,10 @@ No serán revisados correos que lleguen pasada la hora límite de entrega.
 ## Pre-requisitos
 * pyenv | [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
 * pipenv | [https://pipenv-es.readthedocs.io/es/latest/](https://pipenv-es.readthedocs.io/es/latest/)
-* pandoc | []()
+* pandoc | [https://pandoc.org](https://pandoc.org)
 
 ## Recursos
 * matplotlib | []()
-* pandoc | []()
 * numpy | []()
 * sympy | []()
 * octave | []()
