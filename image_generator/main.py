@@ -1,22 +1,54 @@
 import os
 
+from sympy.interactive import printing
+printing.init_printing(use_latex=True)
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.ticker
+# from sympy import Piecewise, log, ITE, piecewise_fold
+# from sympy.abc import x, y
 
-from data import x, y, xpi, ypi, xpf, ypf, coeff
+
+from data import data
 
 FONT = {'family' : 'DejaVu Sans',
         'weight' : 'bold',
         'size'   : 20}
 
 IMAGE_FILE = "Figura1.png"
-IMAGES_DIRECTORY =  os.path.normpath(os.path.join(os.getcwd(),"..","images"))
+IMAGES_DIRECTORY =  os.path.normpath(os.path.join(os.getcwd(),"..","assets"))
 IMAGE_PATH = os.path.join(IMAGES_DIRECTORY, IMAGE_FILE)
 
+print(data.slope_list[1].y)
 
-coeff = np.array(coeff)
+data.coeff = np.array(data.coeff)
+
+# count = data.points.x[0]
+# funs = []
+# conds = []
+# for i in range(0,25):
+#   limit = data.points.x[i+1]
+#   while count <= limit:
+#     fun = (data.coeff[i,3]*(x-data.points.x[i])**3)+(data.coeff[i,2]*(x-data.points.x[i])**2)+(data.coeff[i,1]*(x-data.points.x[i]))+(data.coeff[i,0])
+#     funs.append(fun)
+#     cond = data.points.x[i] < x
+#     conds.append(cond)
+#     cond = x > data.points.x[i+1]
+#     conds.append(cond)
+#     count+=1
+  
+
+# pieces = []
+# for i in range(0,24):
+#   piece = (funs[i],conds[2*i])
+#   pieces.append(piece)
+#   piece = (funs[i],conds[2*i+1])
+#   pieces.append(piece)
+
+
+# pprint(Piecewise(*pieces),use_unicode=False)
 
 
 def get_axes_of_turtle_image():
@@ -48,36 +80,36 @@ def make_figure_two():
 
 def make_figure_three():
     ax = get_axes_of_turtle_image()
-    ax.plot(x,y,'ro-',markersize=12, linewidth = 4)
+    ax.plot(data.points.x,data.points.y,'ro-',markersize=12, linewidth = 4)
     plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura3.png"), bbox_inches="tight", dpi = 72)
 
 def make_figure_four():
     ax = get_axes_of_turtle_image()
     draw_red_dot(ax,-13.4,1.3)
     draw_red_dot(ax, 10, 1.6)
-    draw_blue_line(ax, xpi, ypi)
-    draw_blue_line(ax, xpf, ypf)
+    draw_blue_line(ax, data.slope_list[0].x, data.slope_list[0].y)
+    draw_blue_line(ax, data.slope_list[1].x, data.slope_list[1].y)
     plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura4.png"), bbox_inches="tight", dpi = 72)
 
 
 def make_figure_eight():
     ax = get_axes_of_turtle_image()
-    ax.plot(x,y,'ro-',markersize=12, linewidth = 4)
+    ax.plot(data.points.x,data.points.y,'ro-',markersize=12, linewidth = 4)
     spline_y = get_spline_y()
     spline_x = np.arange(-13.4, 10.1, 0.1)
     ax.plot(spline_x,spline_y,'b-', linewidth = 4)
     plt.savefig(os.path.join(IMAGES_DIRECTORY,"Figura8.png"), bbox_inches="tight", dpi = 72)
 
 def get_spline_y():
-    count = x[0]
+    count = data.points.x[0]
 
     spline_y = np.empty(0)
     for i in range(0,25):
-        limit = x[i+1]
+        limit = data.points.x[i+1]
         while count < limit:
-            value = (coeff[i,3]*(count-x[i])**3)+(coeff[i,2]*(count-x[i])**2)+(coeff[i,1]*(count-x[i]))+(coeff[i,0])
+            value = (data.coeff[i,3]*(count-data.points.x[i])**3)+(data.coeff[i,2]*(count-data.points.x[i])**2)+(data.coeff[i,1]*(count-data.points.x[i]))+(data.coeff[i,0])
             spline_y  = np.append(spline_y, value)
-            count+=1
+            count+=0.1
     return spline_y
 
 def draw_blue_line(axes,x_coordenates,y_coordenates):
@@ -86,13 +118,17 @@ def draw_blue_line(axes,x_coordenates,y_coordenates):
 def draw_red_dot(axes,x_coordenates,y_coordenates):
     axes.plot(x_coordenates, y_coordenates,'ro',markersize=12, linewidth = 4)
 
+def make_(parameter_list):
+    pass
+
 
 def main():
-    print("successful ...!")
     make_figure_two()
     make_figure_three()
     make_figure_four()
     make_figure_eight()
+    print("the images were generated sucessfully ...! ")
+    print("you can find them on ../assets")
 
 if __name__ == "__main__":
     main()

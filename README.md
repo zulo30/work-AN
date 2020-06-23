@@ -25,14 +25,14 @@ No serán revisados correos que lleguen pasada la hora límite de entrega.
 ## Pre-requisitos
 * pyenv | [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
 * pipenv | [https://pipenv-es.readthedocs.io/es/latest/](https://pipenv-es.readthedocs.io/es/latest/)
-* pandoc | []()
+* pandoc | [https://pandoc.org](https://pandoc.org)
 
 ## Recursos
-* matplotlib | []()
-* pandoc | []()
-* numpy | []()
-* sympy | []()
-* octave | []()
+* matplotlib | [https://matplotlib.org](https://matplotlib.org)
+* list highlight styles | [https://www.garrickadenbuie.com/](https://www.garrickadenbuie.com/blog/pandoc-syntax-highlighting-examples/)
+* numpy | [https://www.numpy.org](https://numpy.org)
+* sympy | [https://www.sympy.org](https://www.sympy.org/en/index.html)
+* octave | [https://www.octave.org](https://www.gnu.org/software/octave/)
 * colab | [https://colab.research.google.com/drive/](https://colab.research.google.com/drive/1FdnMlV9KXDKaOb77rUtq25LlTIXLkPHl)
 
 ## Miembros
